@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dictado musical</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎵 Dictado musical</h1>
+    <div class="stats">
+      <div class="stat"><span>Nivel</span><strong id="level">1</strong></div>
+      <div class="stat"><span>Puntos</span><strong id="score">0</strong></div>
+      <div class="stat"><span>Récord</span><strong id="best">0</strong></div>
+      <div class="stat"><span>Racha</span><strong id="streak">0</strong></div>
+      <div class="stat"><span>Acierto</span><strong id="accuracy">—</strong></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- Mano izquierda: controles con letras -->
+    <section class="panel left" aria-label="Controles mano izquierda">
+      <h2>Mano izquierda</h2>
+      <button class="ctrl" data-action="flat"><kbd>Q</kbd> Bemol ♭</button>
+      <button class="ctrl" data-action="sharp"><kbd>W</kbd> Sostenido ♯</button>
+      <button class="ctrl" data-action="replay"><kbd>A</kbd> Repetir nota</button>
+      <button class="ctrl" data-action="reference"><kbd>S</kbd> Referencia (Do)</button>
+      <button class="ctrl" data-action="start"><kbd>D</kbd> Empezar</button>
+      <button class="ctrl" data-action="pause"><kbd>F</kbd> Pausa</button>
+      <p class="hint">Repetir la nota reduce los puntos de esa ronda.</p>
+    </section>
+
+    <!-- Zona central: estado de la ronda -->
+    <section class="center">
+      <div class="level-info">
+        <span id="level-name"></span>
+        <div class="progress"><div id="level-progress"></div></div>
+      </div>
+      <div id="card" class="card" data-tone="">
+        <p id="status" class="status"></p>
+        <p id="answer" class="answer"></p>
+        <p id="modifier" class="modifier"></p>
+      </div>
+      <div class="timer"><div id="timer-bar"></div></div>
+    </section>
+
+    <!-- Mano derecha: teclado numérico -->
+    <section class="panel right" aria-label="Teclado numérico mano derecha">
+      <h2>Mano derecha</h2>
+      <div class="numpad">
+        <button class="pad" data-key="7"><kbd>7</kbd>Si</button>
+        <button class="pad" data-key="8"><kbd>8</kbd>Do'</button>
+        <span class="pad empty"></span>
+        <button class="pad" data-key="4"><kbd>4</kbd>Fa</button>
+        <button class="pad" data-key="5"><kbd>5</kbd>Sol</button>
+        <button class="pad" data-key="6"><kbd>6</kbd>La</button>
+        <button class="pad" data-key="1"><kbd>1</kbd>Do</button>
+        <button class="pad" data-key="2"><kbd>2</kbd>Re</button>
+        <button class="pad" data-key="3"><kbd>3</kbd>Mi</button>
+      </div>
+      <p class="hint">Para alteraciones pulsa <kbd>Q</kbd>/<kbd>W</kbd> y luego el número
+        (W+1 = Do♯, Q+2 = Re♭).</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <button class="link" data-action="reset">Borrar progreso</button>
+  </footer>
+
+  <script src="js/logic.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
